@@ -1,0 +1,15 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        return sorted(s) == sorted(t)
+        """
+        t_list = list(t)
+        for letter in s:
+            if letter in t_list:
+                t_list.remove(letter)
+            else:
+                return False
+        if not t_list:
+            return True
+        else:
+            return False
+        """

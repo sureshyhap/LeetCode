@@ -1,0 +1,13 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        result = []
+        i = 0
+        while strs:
+            word_to_compare = strs.pop()
+            result.append([word_to_compare])
+            for word in strs[:]:
+                if sorted(word) == sorted(word_to_compare):
+                    result[i].append(word)
+                    strs.remove(word)
+            i += 1
+        return result    
