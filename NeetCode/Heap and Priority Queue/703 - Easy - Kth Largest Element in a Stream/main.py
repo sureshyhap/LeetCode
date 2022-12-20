@@ -2,64 +2,38 @@ class KthLargest:
 
     def __init__(self, k: int, nums: List[int]):
         self.k = k
-        self.data = nums
+        self.heap = []
+        self.heap2 = []
+        if nums:
+            self.heap = list(map(lambda x : -x, nums))
+            heapq.heapify(self.heap)
+            for _ in range(self.k - 1):
+                value2 = -heapq.heappop(self.heap)
+                heapq.heappush(self.heap2, value2)
+
+
 
     def add(self, val: int) -> int:
-        self.data.append(val)
-        return self.quick_select(0, len(self.data) - 1, self.k)
-        
-    def quick_select(self, start_index, end_index, k):
-        
-        
-        
-        if end_index - start_index >= 2:
-            mid = self.median_3_part(start_index, end_index)
-            pivot = self.data[mid]
-            self.swap(mid, end_index - 1)
-            start = start_index
-            end = end_index - 1
-            while start < end:
-                start += 1
-                while self.data[start] > pivot:
-                    start += 1
-                end -= 1
-                while self.data[end] < pivot:
-                    end -= 1
-                if start < end:
-                    self.swap(start, end)
-            self.swap(start, end_index - 1)
-            if start == k:
-                return self.data[start]
-            elif k > start:
-                return self.quick_select(start + 1, end_index - 1, k)
+        if self.heap:
+            top = -self.heap[0]
+            if val < top:
+                heapq.heappush(self.heap, -val)
             else:
-                return self.quick_select(start_index, start - 1, k)
+                heapq.heappush(self.heap2, val)
+                new_kth = -heapq.heappop(self.heap2)
+                heapq.heappush(self.heap, new_kth)
         else:
-            if start_index == k:
-                return self.data[start_index]
-            elif end_index == k:
-                return self.data[end_index]
-        
-        
-        
-        
-        
-    def median_3_part(self, start, end):
-        first = start
-        last = end
-        mid = (first + last) // 2
-        if self.data[first] < self.data[mid]:
-            self.swap(first, mid)
-        if self.data[first] < self.data[last]:
-            self.swap(first, last)
-        if self.data[mid] < self.data[last]:
-            self.swap(mid, last)
-        return mid
-            
-    def swap(self, index1, index2):
-        temp = self.data[index1]
-        self.data[index1] = self.data[index2]
-        self.data[index2] = temp
+            self.heap.append(-val)
+            if self.heap2:
+                top2 = self.heap2[0]
+                top = -self.heap[0]
+                if top > top2:
+                    value = -heapq.heappop(self.heap)
+                    heapq.heappush(self.heap2, value)
+                    minimum = heapq.heappop(self.heap2)
+                    heapq.heappush(self.heap, -minimum)
+        return -self.heap[0]
+
 
 
 # Your KthLargest object will be instantiated and called as such:
