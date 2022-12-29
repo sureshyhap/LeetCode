@@ -2,7 +2,9 @@ class KthLargest:
 
     def __init__(self, k: int, nums: List[int]):
         self.k = k
+        # Kth largest and down
         self.heap = []
+        # Largest k - 1 elements
         self.heap2 = []
         if nums:
             self.heap = list(map(lambda x : -x, nums))

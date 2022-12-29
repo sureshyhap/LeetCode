@@ -1,0 +1,21 @@
+class Trie:
+
+    def __init__(self):
+        self.end_of_word = False
+        self.children = { chr(ord("a") + i) : None for i in range(26)}
+
+    def insert(self, word: str) -> None:
+        
+
+    def search(self, word: str) -> bool:
+        
+
+    def startsWith(self, prefix: str) -> bool:
+        
+
+
+# Your Trie object will be instantiated and called as such:
+# obj = Trie()
+# obj.insert(word)
+# param_2 = obj.search(word)
+# param_3 = obj.startsWith(prefix)
