@@ -1,0 +1,50 @@
+Two-pointers is an extremely common technique used to solve array and string problems. It involves having two integer variables that both move along an iterable.
+
+There are several ways to implement two-points. One method is:
+
+Start the pointers at the edges of the input. Move them towards each other until they meet.
+
+Deciding which pointers to move and when will depend on the problem we are trying to solve.
+
+CODE
+
+The strength of this technique is that we will never have more than O(n) iterations for the while loop because the pointers start n away from each other and move at least one step closer in every iteration. If we keep the work inside each iteration at O(1), this technique will result in a linear runtime, which is usually the best possible runtime.
+
+Example 1: Given a string ``s``, return ``true`` if it is a palindrome, ``false`` otherwise
+
+Our algoirthm is very efficient as not only does it run in O(n), but it also uses only O(1) space. No matter how big the input is, we will always only use two integer variables.
+
+Example 2: Given a **sorted** array of unique integers and a target integer, return ``true`` if there exists a pair of numbers that sum to target, `false` otherwise. This problem is similar to the problem: Two Sum (but in Two Sum, the input is not sorted).
+
+For example, given ``nums = [1, 2, 4, 6, 8, 9, 14, 15]`` and ``target = 13``, return true because ``4 + 9 = 13``.
+
+Brute force would yield O(n^2) by trying exhaustively all pairs of numbers, but we can reduce this to O(n) using two pointers. This works because the numbers are sorted. Moving the left pointer to the right permanently increases the value the left pointer points to; moving the right pointer to the left permanently decreases the value the right pointer points to. If we have ``x + y > target``, then we can never have a solution with ``y`` because ``x`` can only increase. So if a solution exists, we can only find it by decreasing ``y``. Similar logic applies to ``x``.
+
+Let's say we have ``nums = [3, 6, 21, 23, 25]`` and ``target = 27``. 3 + 25 is too large. So even with the smallest left number it is too large. That means that 25 could never be part of the answer and thus we should move the right pointer left. Disregard 25 and consider 23 to be the new "largest" number.
+
+Similar logic applies when the sum is too small.
+
+CODE
+
+When the problem has two iterables in the input (2 strings, 2 arrays), using two pointers means:
+Move along both inputs simultaneously until all elements have been checked.
+
+CODE
+
+The runtime will be linear in the two array lengths, O(n + m) if the work inside the while loop is O(1).
+
+Example 3: Given two sorted integer arrays ``arr1`` and ``arr2``, return a new array that combines both of them and is also sorted.
+
+The first thing that might come to mind is to combine both arrays and then perform a sort. If we have ``n = arr1.length + arr2.length`` (a different n from the n in the code which is the length of the first array), then we get a time complexity of O(nlogn) (the cost of sorting). This would be a good approach if the input arrays were not sorted, but because they are sorted we can use the two pointers technique to improve it to O(n).
+
+CODE
+
+Example 4: 392. Is Subsequence. Given two strings ``s`` and ``t``, return ``true`` if ``s`` is a subsequence of ``t``, or ``false`` otherwise.
+
+A subsequence of a string is a sequence of characters that can be obtained by deleting some (or none) of the characters from the original string, while maintaining the relative order of the remaining characters. For example, "ace" is a subsequence of "abcde" while "aec" is not.
+
+We can use two pointers to solve this in linear time. If we find that ``s[i] == t[j]``, that means we "found" the letter at position ``i`` for ``s``, and we can move on to the next one by incrementing ``i``. We should increment ``j`` at each iteration no matter what (which means we could also implement this algorithm using a for loop). ``s`` is a subsequence of ``t`` if we can "find" all the letters of ``s``, which means that ``i == s.length`` at the end of the algorithm.
+
+CODE
+
+All the methods like starting the two pointers at the ends are just guidelines. They might not always start there. But the ideas are the same. Some problems even use three pointers!

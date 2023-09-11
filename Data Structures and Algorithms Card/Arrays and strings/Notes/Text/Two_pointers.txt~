@@ -1,0 +1,22 @@
+Two-pointers is an extremely common technique used to solve array and string problems. It involves having two integer variables that both move along an iterable.
+
+There are several ways to implement two-points. One method is:
+
+Start the pointers at the edges of the input. Move them towards each other until they meet.
+
+Deciding which pointers to move and when will depend on the problem we are trying to solve.
+
+CODE
+
+The strength of this technique is that we will never have more than O(n) iterations for the while loop because the pointers start n away from each other and move at least one step closer in every iteration. If we keep the work inside each iteration at O(1), this technique will result in a linear runtime, which is usually the best possible runtime.
+
+Example 1: Given a string ``s``, return ``true`` if it is a palindrome, ``false`` otherwise
+
+Our algoirthm is very efficient as not only does it run in O(n), but it also uses only O(1) space. No matter how big the input is, we will always only use two integer variables.
+
+Example 2: Given a **sorted** array of unique integers and a target integer, return ``true`` if there exists a pair of numbers that sum to target, `false` otherwise. This problem is similar to the problem: Two Sum (but in Two Sum, the input is not sorted).
+
+For example, given ``nums = [1, 2, 4, 6, 8, 9, 14, 15]`` and ``target = 13``, return true because ``4 + 9 = 13``.
+
+Brute force would yield O(n^2) by trying exhaustively all pairs of numbers, but we can reduce this to O(n) using two pointers. This works because the numbers are sorted. Moving the left pointer to the right permanently increases the value the left pointer points to; moving the right pointer to the left permanently decreases the value the right pointer points to. If we have ``x + y > target``, then we can never have a solution with ``y`` because ``x`` can only increase. So if a solution exists, we can only find it by decreasing ``y``. Similar logic applies to ``x``.
+
