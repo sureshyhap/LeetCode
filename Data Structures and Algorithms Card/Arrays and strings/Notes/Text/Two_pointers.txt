@@ -48,3 +48,5 @@ We can use two pointers to solve this in linear time. If we find that ``s[i] == 
 CODE
 
 All the methods like starting the two pointers at the ends are just guidelines. They might not always start there. But the ideas are the same. Some problems even use three pointers!
+
+SEE PROBLEM 344, 977

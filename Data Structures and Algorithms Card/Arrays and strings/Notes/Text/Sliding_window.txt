@@ -1,0 +1,24 @@
+Sliding window
+
+A subarray is aka a window. To be considered a subarray, the elements must be adjacent to each other in the original array and in their original order. A sliding window uses two pointers.
+
+When should we use sliding window?
+
+**First**, the problem with define criteria that make a subarray "valid". There are 2 components to this:
+1) A constraint metric. This is some attribute of a subarray. It could be the sum, the number of unique elements, the frequency of a specific element, etc.
+2) A numeric restriction on the constant metric
+
+For example, let's say a problem declares a subarray is valid if it has a sum less than or equal to ``10``. The constraint metric here is the sum of the subarray, and the numeric restriction is ``<= 10``.
+
+**Second**, the problem will ask you to find valid subarrays in some way.
+1) The most common task you will see if finding the **best** valid subarray. For example, a problem might ask you to find the **longest** valid subarray.
+2) Another common task is finding the number of valid subarrays.
+
+Whenever a problem talks about subarrays. you should figure out if sliding window is a good option by looking for the above characteristics of such problems.
+
+Ex. Find the longest subarray with a sum less than or equal to ``k``
+    Find the longest substring that has at most one "0"
+    Find the number of subarrays that have a product less than ``k``
+
+
+
