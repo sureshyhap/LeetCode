@@ -152,3 +152,7 @@ class Solution:
 --------------
 
 All the methods like starting the two pointers at the ends are just guidelines. They might not always start there. But the ideas are the same. Some problems even use three pointers!
+
+-----------------
+
+SEE PROBLEMS 344, 977
