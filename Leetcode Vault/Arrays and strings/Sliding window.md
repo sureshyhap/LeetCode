@@ -1,6 +1,6 @@
-Sliding window
-
 A subarray is aka a window. To be considered a subarray, the elements must be adjacent to each other in the original array and in their original order. A sliding window uses two pointers.
+
+![[Pasted image 20230915185848.png]]
 
 When should we use sliding window?
 
@@ -26,7 +26,7 @@ Initially, we have ``left = right = 0``. To expand our "window", increment ``rig
 
 As we add and remove elements, we are "sliding" our window along the input from left to right. The window's size is constantly changing - it grows as large as it can until it's invalid, and then it shrinks. However, it always slides to the right, until we reach the end.
 
-PIC
+![[Pasted image 20230917113809.png]]
 
 Let's say we are given a positive integer array ``nums`` and an integer ``k``. We need to find the length of the longest subarray that has a sum less than or equal to ``k``. For this example, let ``nums = [3, 2, 1, 3, 1, 1]`` and ``k = 5``.
 
@@ -51,23 +51,51 @@ function fn(arr):
 
 Why is the sliding window efficient?
 
-For an array, how many subarrays are there? If the array has length of ``n``, there are ``n`` subarrays of length ``1``. Then there are ``n - 1`` subarrays of length ``2`` (every index except the last one can be a starting index), ``n - 2`` subarrays of length ``3`` and so on until there is only ``1`` subarray of length ``n``. This means there are $$n + n - 1 + n - 2 + ... + 1 = n(n + 1) / 2$$ subarrays in total. In terms of time complexity, any algorithm that looks at every subarray will be at least $O(n ^ 2)$, which is usually too slow. A sliding window guarantees a maximum of $2n$ window iterations - the right pointer can move $n$ times in total and the left pointer can move  $n$ times in total. This means that if the logic done for each window is $O(1)$, sliding window algorithms run in $O(n)$, which is much faster.
+For an array, how many subarrays are there? If the array has length of ``n``, there are ``n`` subarrays of length ``1``. Then there are ``n - 1`` subarrays of length ``2`` (every index except the last one can be a starting index), ``n - 2`` subarrays of length ``3`` and so on until there is only ``1`` subarray of length ``n``. This means there are $$n + n - 1 + n - 2 + ... + 1 = n(n + 1) / 2$$subarrays in total. In terms of time complexity, any algorithm that looks at every subarray will be at least $O(n ^ 2)$, which is usually too slow. A sliding window guarantees a maximum of $2n$ window iterations - the right pointer can move $n$ times in total and the left pointer can move  $n$ times in total. This means that if the logic done for each window is $O(1)$, sliding window algorithms run in $O(n)$, which is much faster.
 
-CODE
+Solution:
+
+```
+def find_length(nums, k):
+    # curr is the current sum of the window
+    left = curr = ans = 0
+    for right in range(len(nums)):
+        curr += nums[right]
+        while curr > k:
+            curr -= nums[left]
+            left += 1
+        ans = max(ans, right - left + 1)
+    
+    return ans
+```
+
+----------------------
 
 Example 2: You are given a binary string ``s`` (a string containing only ``"0"`` and ``"1"``). You may choose up to one ``"0"`` and flip it to a ``"1"``. What is the length of the longest substring achievable that contains only ``"1"``?
 
-For example, given ``s = "1101100111"``, the answer is ``5``. If you perform the flip at index ``2``, the string becomes ``<ins>11111</ins>00111``.
+For example, given ``s = "1101100111"``, the answer is ``5``. If you perform the flip at index ``2``, the string becomes <ins>11111</ins>00111.
 
 Another way to look at this problem is "what is the longest substring that contains at most one ``"0"``"? This makes it easy for us to solve with a sliding window where our condition is ``window.count("0") <= 1``. We can use an integer ``curr`` that keeps track of how many ``"0"`` we currently have in our window.
 
-The constraint metric is "how many 0s are in the substring". The numeric restriction is ``<= 1``. Whenever the window becomes invalid (``curr > 1``), we remove elements from the left. If ``s[left] == "0"``, then we can decrement ``curr``. We increment ``left`` to remove elements.
-
-CODE
+```
+def find_length(s):
+    # curr is the current number of zeros in the window
+    left = curr = ans = 0 
+    for right in range(len(s)):
+        if s[right] == "0":
+            curr += 1
+        while curr > 1:
+            if s[left] == "0":
+                curr -= 1
+            left += 1
+        ans = max(ans, right - left + 1)
+    
+    return ans
+```
 
 This solution is $O(n)$ in time like the previous example and $O(1)$ in space.
 
----------
+------
 
 If a problem asks for **the number of subarrays** that fit some constraint and assuming that all subarrays ending at ``right`` of a valid subarray ending at ``right`` are valid, we can still use sliding window, but we need to use a neat math trick to calculate the number of subarrays.
 
@@ -77,7 +105,7 @@ There's the current window ``(left, right)``, then ``(left + 1, right)``, ..., `
 
 You can fix the right bound and then choose any value between ``left`` and ``right`` inclusive for the left bound. Therefore, the number of valid windows **ending** at index ``right`` is also equal to the size of the window, ``right - left + 1``.
 
-------
+------------------
 
 Example 3: 713 - Subarray Product Less Than K
 
@@ -111,5 +139,3 @@ Again the runtime is $O(n)$ and the space complexity is $O(1))$.
 ---------------
 
 In the examples we looked at above, our window size was dynamic. Sometimes, a problem will specify a **fixed** length ``k``. These problems are easy because the difference between any two adjacent windows is only two elements (we add one element on the right and remove one element on the left to maintain the length).
-
-START BY BUILDING
