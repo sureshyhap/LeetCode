@@ -112,4 +112,10 @@ Again the runtime is $O(n)$ and the space complexity is $O(1))$.
 
 In the examples we looked at above, our window size was dynamic. Sometimes, a problem will specify a **fixed** length ``k``. These problems are easy because the difference between any two adjacent windows is only two elements (we add one element on the right and remove one element on the left to maintain the length).
 
-START BY BUILDING
+Example 4: Given an integer array `nums` and an integer `k`, find the sum of the subarray with the largest sum whose length is `k`.
+
+We can build a window of length `k` and then slide it along the array. Add and remove one element at a time to make the window stays size `k`. If were are adding the value at `i`, then we need to remove the value at `i - k`.
+
+This runs in $O(n)$ since each update of the window is just an addition and a subtraction and we go through the array linearly. The space used was $O(1)$.
+
+Frequently, sliding window problems also use a hashmap.
