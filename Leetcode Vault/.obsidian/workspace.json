@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Arrays and strings/More common patterns.md",
+                "file": "Hashing/Checking for existence.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Arrays and strings/More common patterns.md",
+                "file": "Hashing/Checking for existence.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Arrays and strings/More common patterns.md",
+                "file": "Hashing/Checking for existence.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Arrays and strings/More common patterns.md"
+                "file": "Hashing/Checking for existence.md"
               }
             }
           },
@@ -158,14 +158,17 @@
   },
   "active": "fa346a30fe4fc8bc",
   "lastOpenFiles": [
+    "Arrays and strings/Two pointers.md",
+    "Hashing/Checking for existence.md",
+    "Hashing/Hashing.md",
+    "Arrays and strings/Sliding window.md",
     "Arrays and strings/Prefix sum.md",
     "Arrays and strings/More common patterns.md",
-    "Pasted image 20231007120650.png",
-    "Arrays and strings/Sliding window.md",
-    "Arrays and strings/Untitled",
-    "Arrays and strings/Two pointers.md",
     "Arrays and strings/Arrays and strings.md",
     "Pasted image 20230915185848.png",
+    "Hashing",
+    "Pasted image 20231007120650.png",
+    "Arrays and strings/Untitled",
     "Pasted image 20230917113809.png",
     "Arrays and strings/SEE PROBLEMS.md",
     "Arrays and strings/Arrays and strings 1.md",

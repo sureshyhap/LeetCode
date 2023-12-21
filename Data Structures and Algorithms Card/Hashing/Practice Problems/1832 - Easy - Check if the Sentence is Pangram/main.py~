@@ -1,0 +1,9 @@
+class Solution:
+    def checkIfPangram(self, sentence: str) -> bool:
+        letter_counts = {chr(ord("a") + i) : 0 for i in range(26)}
+        for c in sentence:
+            letter_counts[c] += 1
+        for count in letter_counts.values():
+            if count == 0:
+                return False
+        return True

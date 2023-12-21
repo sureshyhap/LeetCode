@@ -1,4 +1,4 @@
-## $O(n) string building$
+## $O(n)$ string building
 
 In languages like Python and Java, strings are immutable. So building up strings incrementally will require repeated copying that will take: `1 + 2 + 3 + .. + n` steps which is $O(n^2)$. Instead, in Python you can use a list and Java you can use the StringBuilder class.
 
