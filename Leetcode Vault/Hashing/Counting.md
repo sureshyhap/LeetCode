@@ -119,3 +119,45 @@ If `curr` is the current prefix sum and we need to figure out how many subarrays
 
 ---------------------------------
 
+Example 4: 560 - Subarray Sum Equals K
+
+Given an integer array `nums` and an integer `k`, find the number of subarrays whose sum is equal to `k`.
+
+Let's go through an example to see why the algorithm above works. Say `nums = [1, 2, 1, 2, 1], k = 3`. There are four subarrays with sum `3` - `[1, 2]` twice and `[2, 1]` twice.
+
+The prefix sum, which is what `curr` represents during iteration, is `[1, 3, 4, 6, 7]`. There are three differences in this array equal to `3`: `(4 - 1)`, `(6 - 3)`, `(7 - 4)`.
+
+But there are four valid subarrays. This is why we needed to initialize our hash map with `0: 1`, considering the empty prefix. This is because if there is a prefix with a sum equal to `k` (in this step our `curr` value), then without initializing `0: 1`, `curr - k = 0` wouldn't show up in the hash map and we would "lose" this valid subarray.
+
+In this case the numbers were all positive so each `curr - k` only showed up once. But in general with non-positive numbers being possible inputs, like if `nums = [1, -1, 1, -1]` with `k = 1` and thus prefix sum = `[1, 0, 1, 0]`, when `curr` is at the third index of the prefix sum, `curr - k = 1 - 1 = 0` is seen twice before (once at the second index and before the first because we needed to handle the case with `curr = k` from the last paragraph). So we won't be able to get away with a hash set this time (considering non-positive numbers in addition to positive ones).
+
+In the following code, the prefix sum is calculated "on the fly' as the current value of `curr`, it is not done beforehand to completion as a pre-processing step.
+
+```
+from collections import defaultdict
+
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        counts = defaultdict(int)
+        counts[0] = 1
+        ans = curr = 0
+
+        for num in nums:
+            curr += num
+            ans += counts[curr - k]
+            counts[curr] += 1
+    
+        return ans
+```
+
+To summarize:
+
+- We use `curr` to track the prefix sum.
+- At any index `i`, the sum up to `i` is `curr`. If there is an index `j` whose prefix is `curr - k`, tthen the sum of the subarray from `j + 1` to `i` is `curr - (curr - k) = k`.
+- Because the array can have negative numbers, the same prefix can occur multiple times. We use a hash map `counts` to track how many times a prefix has occurred.
+- At every index `i`, the frequency of `curr - k` is equal to the number of subarrays whose sum is equal to `k` that end at `i`. Add it to the answer.
+
+The time and space complexity of this algorithm are both $O(n)$, where $n$ is the length of `nums`. Each for loop iteration runs in constant time and the hash map can grow to a size of $n$ elements.
+
+--------------------------
+
