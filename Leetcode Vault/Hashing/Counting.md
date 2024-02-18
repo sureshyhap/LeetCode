@@ -161,3 +161,29 @@ The time and space complexity of this algorithm are both $O(n)$, where $n$ is th
 
 --------------------------
 
+Example 5: 1248 - Count Number of Nice Subarrays
+
+Given an array of positive integers `nums` and an integer `k`, find the number of subarrays with exactly `k` odd numbers in them.
+
+For example, given `nums = [1, 1, 2, 1, 1], k = 3`, the answer is `2`. The subarrays with `3` odd numbers in them are [<ins>1, 1, 2, 1</ins>, 1] and [1, <ins>1, 2, 1, 1</ins>].
+
+In the previous example, the constraint metric was a sum, so we had `curr` record a prefix sum. In this problem, the constraint metric is **odd number count**. Let's have `curr` track the count of odd numbers so far. We will keep track of the `curr`s at each index in a hash map. If there are `curr = 4` odd numbers at an index and `curr = 1` at a prior index, then the subarray formed similar to a prefix sum difference gives a value of `4 - 1 = 3` odd numbers between them. At every element, we can query `curr - k` again. We add each differences to the result if the difference equals `k` , i.e. (`curr - (curr - k) = k`).
+
+```
+from collections import defaultdict
+
+class Solution:
+    def numberOfSubarrays(self, nums: List[int], k: int) -> int:
+        counts = defaultdict(int)
+        counts[0] = 1
+        ans = curr = 0
+        
+        for num in nums:
+            curr += num % 2
+            ans += counts[curr - k]
+            counts[curr] += 1
+
+        return ans
+```
+
+The time and space complexity is also $O(n)$.
