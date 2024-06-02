@@ -187,3 +187,7 @@ class Solution:
 ```
 
 The time and space complexity is also $O(n)$.
+
+---------------------
+
+SEE PROBLEMS 2225, 1133, 1189, 525

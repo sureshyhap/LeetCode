@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Hashing/Counting.md",
+                "file": "Hashing/More hashing examples.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Hashing/Counting.md",
+                "file": "Hashing/More hashing examples.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Hashing/Counting.md",
+                "file": "Hashing/More hashing examples.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Hashing/Counting.md"
+                "file": "Hashing/More hashing examples.md"
               }
             }
           },
@@ -160,15 +160,16 @@
   },
   "active": "fa346a30fe4fc8bc",
   "lastOpenFiles": [
-    "Hashing/Checking for existence.md",
-    "Hashing/Counting.md",
-    "Arrays and strings/Two pointers.md",
+    "Pasted image 20230915185848.png",
     "Hashing/Hashing.md",
+    "Hashing/Counting.md",
+    "Hashing/More hashing examples.md",
+    "Hashing/Checking for existence.md",
+    "Arrays and strings/Two pointers.md",
     "Arrays and strings/Sliding window.md",
     "Arrays and strings/Prefix sum.md",
     "Arrays and strings/More common patterns.md",
     "Arrays and strings/Arrays and strings.md",
-    "Pasted image 20230915185848.png",
     "Hashing",
     "Pasted image 20231007120650.png",
     "Arrays and strings/Untitled",
