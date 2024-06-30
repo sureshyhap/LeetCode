@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "fa346a30fe4fc8bc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Linked lists/Linked lists.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "e34a39e6e2b3f001",
             "type": "leaf",
             "state": {
@@ -31,8 +19,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -173,9 +160,9 @@
   },
   "active": "e34a39e6e2b3f001",
   "lastOpenFiles": [
-    "Fast and slow pointers.md",
-    "Linked lists/Reversing a linked list.md",
     "Linked lists/Linked lists.md",
+    "Linked lists/Reversing a linked list.md",
+    "Fast and slow pointers.md",
     "Hashing/More hashing examples.md",
     "Linked lists",
     "Pasted image 20230915185848.png",
