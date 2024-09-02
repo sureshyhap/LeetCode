@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linked lists/Reversing a linked list.md",
+                "file": "Stacks and queues/Monotonic.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Linked lists/Reversing a linked list.md",
+                "file": "Stacks and queues/Monotonic.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Linked lists/Reversing a linked list.md",
+                "file": "Stacks and queues/Monotonic.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Linked lists/Reversing a linked list.md"
+                "file": "Stacks and queues/Monotonic.md"
               }
             }
           },
@@ -160,8 +160,14 @@
   },
   "active": "e34a39e6e2b3f001",
   "lastOpenFiles": [
+    "Stacks and queues/Stacks.md",
+    "Stacks and queues/Monotonic.md",
+    "Stacks and queues/String problems.md",
+    "Stacks and queues/Queues.md",
     "Linked lists/Linked lists.md",
     "Linked lists/Reversing a linked list.md",
+    "Untitled.md",
+    "Stacks and queues",
     "Fast and slow pointers.md",
     "Hashing/More hashing examples.md",
     "Linked lists",
