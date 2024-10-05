@@ -117,3 +117,48 @@ To summarize:
 
 -------------------------------------
 
+Example 3: 1438 - Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit
+
+Given an array of integers `nums` and an integer `limit`, return the size of the longest subarray such that the absolute difference between any two elements of this subarray is less than or equal to the limit.
+
+The "maximum absolute difference between any two elements" is the maximum element minus the minimum element. We want the longest subarray such that `max - min <= limit`. We can use a sliding window for this.
+
+From the previous example we learned how to keep the maximum element in a sliding window. We need to do that again here but also keep the minimum element.
+
+Use two deques - one monotonic increasing and one monotonic decreasing. The monotonic increasing one has the minimum element in the window at the first index. The monotonic decreasing one has the maximum element in the window at the first index. Add as much as you can without breaking the constraint and then when you break it remove from the left side of the window  until it's fixed.
+
+```
+from collections import deque
+
+class Solution:
+    def longestSubarray(self, nums: List[int], limit: int) -> int:
+        increasing = deque()
+        decreasing = deque()
+        left = ans = 0
+        
+        for right in range(len(nums)):
+            # maintain the monotonic deques
+            while increasing and increasing[-1] > nums[right]:
+                increasing.pop()
+            while decreasing and decreasing[-1] < nums[right]:
+                decreasing.pop()
+                
+            increasing.append(nums[right])
+            decreasing.append(nums[right])
+            
+            # maintain window property
+            while decreasing[0] - increasing[0] > limit:
+                if nums[left] == decreasing[0]:
+                    decreasing.popleft()
+                if nums[left] == increasing[0]:
+                    increasing.popleft()
+                left += 1
+            
+            ans = max(ans, right - left + 1)
+
+        return ans
+```
+
+With efficient queues, this algorithm has a time and space complexity of $O(n)$ as each for loop iteration is amortized $O(1)$ and the deques can grow to size $n$, where n is the size of `nums`.
+
+SEE PROBLEMS 496, 901

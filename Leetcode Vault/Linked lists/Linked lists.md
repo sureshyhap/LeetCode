@@ -71,7 +71,7 @@ public class Example {
 }
 ```
 
-C++
+### C++
 
 ```
 struct LinkedListNode {
