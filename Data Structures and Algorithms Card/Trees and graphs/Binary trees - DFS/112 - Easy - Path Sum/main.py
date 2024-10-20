@@ -16,3 +16,20 @@ class Solution:
             return True
         right = self.hasPathSum(root.right, new_target)
         return right
+
+        """
+        if not root:
+            return False
+        stack = [(root, root.val)]
+        current_sum = 0
+        while stack:
+            node, value = stack.pop()
+            if not node.left and not node.right:
+                if value == targetSum:
+                    return True
+            if node.left:
+                stack.append((node.left, node.left.val + value))
+            if node.right:
+                stack.append((node.right, node.right.val + value))
+        return False
+        """
